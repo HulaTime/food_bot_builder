@@ -11,6 +11,7 @@ GEM
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.2.5)
+    dotenv (2.1.1)
     equalizer (0.0.11)
     faraday (0.10.0)
       multipart-post (>= 1.2, < 3)
@@ -59,6 +60,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dotenv
   httparty
   json
   rspec
