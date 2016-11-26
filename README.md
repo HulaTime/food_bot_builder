@@ -17,4 +17,8 @@ This is a bot that communicates with the Telegram messeger client, while it is r
 
 The bot is available to chat with here telegram.me/lv1bot
 
-## Authored by Naridas and MaxProvin (github usernames)
+## Authored by Naridas(Grigorios Gerogiokas) and MaxProvin(Max Provin) 
+
+## Future expansion
+Search recipes with calories, diet and allergies.
+Perhaps also do nutrition analysis of recipe or ingredients
