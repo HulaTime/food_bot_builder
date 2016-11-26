@@ -12,7 +12,7 @@ Telegram::Bot::Client.run(ENV['AUTH_TOKEN']) do |bot|
 
     when '/start'
       bot.api.send_message(chat_id:message.chat.id, text: "Hello, #{message.from.first_name}")
-    
+
     when '/recipes'
   	  updates = HTTParty.get(T_URL)
   	  count = updates['result'].length
@@ -21,16 +21,18 @@ Telegram::Bot::Client.run(ENV['AUTH_TOKEN']) do |bot|
           user_input = HTTParty.get(T_URL)['result'][-1]['message']['text']
           bot.api.send_message(chat_id: message.chat.id, text: user_input)
           h = HTTParty.get((F_URL+"&q=#{user_input}"))
-  			  
-          h['hits'].each do |hit| 
+          kb = []
+          h['hits'].each do |hit|
   				  text = hit['recipe']['label']
-  				  bot.api.send_message(chat_id: message.chat.id, text: text)
-  			  end            
+            recipe_url = hit['recipe']['url']
+            kb << Telegram::Bot::Types::InlineKeyboardButton.new(text: text, url: recipe_url)
+  			  end
+          markup = Telegram::Bot::Types::InlineKeyboardMarkup.new(inline_keyboard: kb)
+          bot.api.send_message(chat_id: message.chat.id, text: 'Choose Recipe', reply_markup: markup)
   			break
         end
   		end
-    
-    end	
+
+    end
   end
 end
-
