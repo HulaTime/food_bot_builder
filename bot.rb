@@ -19,7 +19,11 @@ Telegram::Bot::Client.run(ENV['AUTH_TOKEN']) do |bot|
   	  count = updates['result'].length
       loop do
   		  if HTTParty.get(T_URL)['result'].length != count
-          user_input = HTTParty.get(T_URL)['result'][-1]['message']['text'].gsub!(' ','%20')
+          if HTTParty.get(T_URL)['result'][-1]['message']['text'].include?(' ')
+            user_input = HTTParty.get(T_URL)['result'][-1]['message']['text'].gsub!(' ','%20')
+          else
+            user_input = HTTParty.get(T_URL)['result'][-1]['message']['text']
+          end
           h = HTTParty.get((F_URL+"&q=#{user_input}"))
           kb = []
           h['hits'].each do |hit|
