@@ -18,16 +18,16 @@ Telegram::Bot::Client.run(ENV['AUTH_TOKEN']) do |bot|
   	  count = updates['result'].length
   	  bot.api.send_message(chat_id: message.chat.id, text: count)
       loop do
-  		  if HTTParty.get(T_URL)['result'].length != count - 1
+  		  if HTTParty.get(T_URL)['result'].length != count
   			  bot.api.send_message(chat_id: message.chat.id, text: (HTTParty.get(T_URL)['result'].length))
           ingredient = HTTParty.get(T_URL)['result'][-1]['message']['text']
           bot.api.send_message(chat_id: message.chat.id, text: ingredient)
-          # h = HTTParty.get((F_URL+"&q=#{ingredient}"))
+          h = HTTParty.get((F_URL+"&q=#{ingredient}"))
   			  
-       #    h['hits'].each do |hit| 
-  				 #  text = hit['recipe']['url']
-  				 #  bot.api.send_message(chat_id: message.chat.id, text: text)
-  			  # end            
+          h['hits'].each do |hit| 
+  				  text = hit['recipe']['url']
+  				  bot.api.send_message(chat_id: message.chat.id, text: text)
+  			  end            
   			break
         end
   		end
