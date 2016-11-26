@@ -14,12 +14,12 @@ Telegram::Bot::Client.run(ENV['AUTH_TOKEN']) do |bot|
       bot.api.send_message(chat_id:message.chat.id, text: "Hello, #{message.from.first_name}")
 
     when '/recipes'
+      bot.api.send_message(chat_id: message.chat.id, text: 'Input Ingredients')
   	  updates = HTTParty.get(T_URL)
   	  count = updates['result'].length
       loop do
   		  if HTTParty.get(T_URL)['result'].length != count
-          user_input = HTTParty.get(T_URL)['result'][-1]['message']['text']
-          bot.api.send_message(chat_id: message.chat.id, text: user_input)
+          user_input = HTTParty.get(T_URL)['result'][-1]['message']['text'].gsub!(' ','%20')
           h = HTTParty.get((F_URL+"&q=#{user_input}"))
           kb = []
           h['hits'].each do |hit|
