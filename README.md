@@ -7,6 +7,9 @@
 ## Usage
 - `ruby bot.rb` to make the bot available
 - 'ctr + C' to end the bot process
+- `/recipes` in telegram chat to get recipes
+
+![Screenshot1](./screen.jpg?raw=true "Usage Screenshot")
 
 ## Technologies
 - Telegram Bot Api
@@ -22,3 +25,4 @@ The bot is available to chat with here telegram.me/lv1bot
 ## Future expansion
 Search recipes with calories, diet and allergies.
 Perhaps also do nutrition analysis of recipe or ingredients
+
