@@ -5,6 +5,7 @@
 - `bundle`
 
 ## Usage
+- Requires: Ruby 2.3.3 and Gem Bundler and API keys/id for Telegram Bot and Edamam
 - `ruby bot.rb` to make the bot available
 - 'ctr + C' to end the bot process
 - `/recipes` in telegram chat to get recipes
