@@ -11,6 +11,10 @@
 
 ![Screenshot1](./screen.jpg?raw=true "Usage Screenshot")
 
+- click on a recipe title to be redirected to the recipe
+
+![Screenshot2](./recipe.jpg?raw=true "Usage Screenshot2")
+
 ## Technologies
 - Telegram Bot Api
 - Edamam Recipe Api
